@@ -1,0 +1,74 @@
+MySQL Database
+
+Create table
+    CREATE TABLE timezone (
+        timezoneId int NOT NULL AUTO_INCREMENT, 
+        CountryCode varchar(255) NOT NULL, 
+        GMTOffset varchar(255), 
+        CONSTRAINT timezonePk PRIMARY KEY (timezoneId), 
+        CONSTRAINT CountryCodeTimezoneFk FOREIGN KEY (CountryCode) REFERENCES country(Code))
+
+
+Insert row into Table timezone
+    INSERT INTO `timezone` (`timezoneId`, `CountryCode`, `GMTOffset`) VALUES (, 'NPL', '+5.45')
+
+Select or Retrieve from table timezone
+    
+    get all records from timezone
+        SELECT * FROM `timezone` 
+    
+    get all from table country that have a population of greater than 1 million people
+        SELECT * FROM `country` WHERE population > 1000000
+    
+    get name, LifeExpectany, GNP and population from table country that has a surface area of greater than 1000000
+        SELECT `Name`,`LifeExpectancy`,`GNP`,`population` FROM `country` WHERE SurfaceArea > 100000
+
+
+Update row from  table timezone; change GMTOffset to 5.45 with country code of NPL
+    UPDATE `timezone` SET `GMTOffset`='5.45' WHERE CountryCode = 'NPL'
+
+Delete row from table timezone with country code NPL
+    DELETE FROM `timezone` WHERE CountryCode = 'NPL'
+
+
+*****************************************************************************************************************************************
+
+NoSQL Database
+
+
+MongoDB: 
+
+create collections: 
+
+    db.createCollection('hosts')
+    db.createCollection('shows') 
+
+insert into collections
+
+    Add data to hosts collection
+        db.hosts.insert({"Firstname: "Jimmy", "Lastname": "Fallon", "age":35})
+        db.hosts.insert({"Firstname: "James", "Lastman": "Cordem", "age": 34})
+
+
+get document from collections
+
+    get all documents from collection host
+        db.hosts.find({})
+
+    get documents from collection which have age field less than 34
+        db.hosts.find({"age": {$lt: 34}})  
+
+
+update documents within collections
+    
+    update 
+        db.collectionName.update({"Firstname": "Jimmy"}, $set{"Lastname": "Page"})
+
+
+delete documents within collections
+
+    db.collectionName.remove({"Firstname":"Jimmy"});
+
+
+
+
